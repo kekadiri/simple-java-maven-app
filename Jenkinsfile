@@ -1,25 +1,21 @@
 pipeline {
     agent any
-    
-    stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/kekadiri/simple-java-maven-app.git'
+        stages {
+            stage('build') {
+                steps {
+                    sh 'mvn package'
+                }
             }
-        }
-        
-        stage('Build') {
-            steps {
-                sh 'mvn clean package'
+            stage('test') {
+                steps {
+                    echo "testing stage"
+                }
             }
-        }
-        
-        stage('sonar') {
-            steps {
-                 sh 'mvn sonar:sonar'
+            stage('sonar') {
+                steps {
+                   sh 'mvn sonar:sonar'
+                }    
             }
-            
-        }
         
         stage('Deploy to Nexus') {
             steps {
