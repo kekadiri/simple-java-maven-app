@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'your-git-repository-url'
+                git 'https://github.com/kekadiri/simple-java-maven-app.git'
             }
         }
         
@@ -39,6 +39,3 @@ pipeline {
                     ]
                 )
             }
-        }
-    }
-}
